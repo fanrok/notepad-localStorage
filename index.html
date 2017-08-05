@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Блокнот</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+  <!--[if IE]>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+ </head>
+ <body >
+  <header>
+  
+  </header>
+  <div  id="app">
+	  <div class="row">
+		<div class="col-md-2 border-right-0">
+			<h1>Блокнот</h1>
+		</div>
+		<div class="col-md-10 border-left-0">
+			<input type="text" class="form-control" v-model="title" :placeholder="title"/>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-md-2 border-right-0">
+			<p>{{title}}</p>
+			<button class="btn btn-info">Добавить</button>
+		</div>
+		<div class="col-md-10 border-left-0">
+			<textarea class="form-control" v-model="message" rows="20" >Писать тут</textarea>
+		</div>
+	  </div>
+  </div>
+  
+  
+  <footer>
+  
+  </footer>
+  
+  
+  
+  <!-- зона скриптов -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="script.js"></script>
+ </body>
+</html>
