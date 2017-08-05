@@ -18,7 +18,7 @@ var notepadStorage = {
 var app = new Vue({
   el: '#app',
   data: {
-    title: 'Hello Vue!',
+    title: 'Простой блокнот с использованием vue.js,localStorage и bootstrap',
 	message: '',
 	records: notepadStorage.fetch(),
     RecordTitle: '',
@@ -37,11 +37,12 @@ var app = new Vue({
 
   methods:{
 	addRecord: function (){//Добавим новую запись
-	  this.records.push({
+	  id = this.records.push({
 		id: notepadStorage.uid++,
 		title: '',
 		message: '',
 	  })
+	  this.editedRecord = this.records[id-1]
       this.RecordTitle = ''
       this.RecordMessage = ''
     },
@@ -58,11 +59,12 @@ var app = new Vue({
 		  record.title = title
 		  record.message = message
 	  }else{
-		this.records.push({
+		id = this.records.push({
 		id: notepadStorage.uid++,
 		title: title,
 		message: message,
 	    })
+        this.editedRecord = this.records[id-1]
 	  }
 	  return
 	},

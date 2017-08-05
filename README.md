@@ -1,2 +1,3 @@
 # notepad-localStorage
-Простой блокнот с использованием vue.js и localStorage
+Простой блокнот с использованием vue.js,localStorage и bootstrap
+

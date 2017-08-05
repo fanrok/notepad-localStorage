@@ -8,5 +8,20 @@
 	text-decoration:underline;
 }
 .mn-left{
-	mergin-left:10px;
+	margin-left:10px;
+}
+.center{
+	text-align:center;
+}
+.records-list{
+	margin-top:20px;
+}
+.form-control{
+	width:95%;
+}
+.mr-right-42{
+	margin-right: 42px;
+}
+.width97{
+	width:97%
 }

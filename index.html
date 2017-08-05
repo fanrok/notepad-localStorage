@@ -15,18 +15,18 @@
   </header>
   <div  id="app">
 	  <div class="row">
-		<div class="col-md-2 border-right-0">
+		<div class="col-md-2 center">
 			<h1>Блокнот</h1>
 		</div>
-		<div class="col-md-10 border-left-0">
+		<div class="col-md-10">
 			<h2>{{title}}</h2>
 		</div>
 	  </div>
 	  <div class="row">
-		<div class="col-md-2 border-right-0">
+		<div class="col-md-2 center">
             <button class="btn btn-info"
 					@click="addRecord"
-			>Добавить</button>
+			>Добавить</button><br/>
 			<ol class="records-list">
 				<li v-for="record in records" 
 					class="record"
@@ -37,15 +37,16 @@
 			
 		</div>
 		<div class="col-md-10 border-left-0">
-			<input type="text" class="form-control" v-model="RecordTitle" :placeholder="title"/><br/>
-			<textarea class="form-control" v-model="RecordMessage" rows="20" >Писать тут</textarea><br>
-            
-			<button class="btn btn-success right mn-left"
-				@click="saveRecord(editedRecord)"
-			>Сохранить</button>
-			<button class="btn btn-primary right mn-left"
-				@click="deleteRecord(editedRecord)"
-			>Удалить</button>
+			<input type="text" class="form-control" v-model="RecordTitle" placeholder="Заголовок заметки"/><br/>
+			<textarea class="form-control" v-model="RecordMessage" placeholder="Тест заметки" rows="20" >Писать тут</textarea><br>
+            <div class="row width97">
+				<button class="btn btn-success fl-right mn-left"
+					@click="saveRecord(editedRecord)"
+				>Сохранить</button>
+				<button class="btn btn-primary fl-right mn-left"
+					@click="deleteRecord(editedRecord)"
+				>Удалить</button>
+			</div>
 		</div>
 	  </div>
   </div>
