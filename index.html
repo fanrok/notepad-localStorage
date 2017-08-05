@@ -19,16 +19,26 @@
 			<h1>Блокнот</h1>
 		</div>
 		<div class="col-md-10 border-left-0">
-			<input type="text" class="form-control" v-model="title" :placeholder="title"/>
+			<h2>{{title}}</h2>
 		</div>
 	  </div>
 	  <div class="row">
 		<div class="col-md-2 border-right-0">
-			<p>{{title}}</p>
+			<ol class="records-list">
+				<li v-for="record in records" 
+					class="record"
+					:key="record.id">
+					{{record.title}}
+				</li>
+			</ol>
 			<button class="btn btn-info">Добавить</button>
 		</div>
 		<div class="col-md-10 border-left-0">
-			<textarea class="form-control" v-model="message" rows="20" >Писать тут</textarea>
+			<input type="text" class="form-control" v-model="newRecord" :placeholder="title"/><br/>
+			<textarea class="form-control" v-model="message" rows="20" >Писать тут</textarea><br>
+			<button class="btn btn-info right"
+				@click="addRecord"
+			>Сохранить</button>
 		</div>
 	  </div>
   </div>
