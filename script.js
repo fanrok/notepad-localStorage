@@ -21,10 +21,13 @@ var app = new Vue({
     title: 'Hello Vue!',
 	message: '',
 	records: notepadStorage.fetch(),
-    newRecord: '',
+    RecordTitle: '',
+    RecordMessage: '',
+    RecordId: '',
+	editedRecord: null,
   },
 
-  watch: {
+  watch: {//наблюдатель. При любом изменении в записях сохраняет их.
     records: {
       handler: function (records) {
         notepadStorage.save(records)
@@ -34,19 +37,32 @@ var app = new Vue({
   },
 
   methods:{
-	addRecord: function (){
-	  var value = this.newRecord && this.newRecord.trim()
-      if (!value) {
+	addRecord: function (){//Сохранение записи
+	  var title = this.RecordTitle && this.RecordTitle.trim()
+	  var message = this.RecordMessage && this.RecordMessage.trim()
+	  var id = this.RecordId && this.RecordId.trim()
+      if (!title) {
         return
       }
       this.records.push({
         id: notepadStorage.uid++,
-        title: value,
-        message: value,
+        title: title,
+        message: message,
         completed: false
       })
-      this.newRecord = ''
-    }
+      this.RecordTitle = ''
+      this.RecordMessage = ''
+      this.RecordId = ''
+    },
+	editRecord: function(record){
+	  this.RecordTitle = record.title
+      this.RecordMessage = record.message
+      this.RecordId = record.id
+	  return
+	},
+	deleteRecord: function(){
+	  return
+	},
   }
 })
 

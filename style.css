@@ -1,3 +1,9 @@
 .right {
     float: right;
 }
+.record{
+	cursor:pointer;
+}
+.record:hover{
+	text-decoration:underline;
+}

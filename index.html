@@ -27,6 +27,7 @@
 			<ol class="records-list">
 				<li v-for="record in records" 
 					class="record"
+					@click="editRecord(record)"
 					:key="record.id">
 					{{record.title}}
 				</li>
@@ -34,8 +35,8 @@
 			<button class="btn btn-info">Добавить</button>
 		</div>
 		<div class="col-md-10 border-left-0">
-			<input type="text" class="form-control" v-model="newRecord" :placeholder="title"/><br/>
-			<textarea class="form-control" v-model="message" rows="20" >Писать тут</textarea><br>
+			<input type="text" class="form-control" v-model="RecordTitle" :key="RecordId" :placeholder="title"/><br/>
+			<textarea class="form-control" v-model="RecordMessage" rows="20" >Писать тут</textarea><br>
 			<button class="btn btn-info right"
 				@click="addRecord"
 			>Сохранить</button>
