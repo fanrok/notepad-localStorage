@@ -7,8 +7,16 @@ var notepadStorage = {
     records.forEach(function (record, index) {
       record.id = index
     })
-    notepadStorage.uid = records.length//todo узнать что должна делать эта строка
+    notepadStorage.uid = records.length
     return records
+  },
+  count: function(){
+	var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
+	if (records.length > 0){
+		return true
+	}else{
+		return false
+	}
   },
   save: function (records) {//сохранение данных в хранилище
     localStorage.setItem(STORAGE_KEY, JSON.stringify(records))
@@ -24,12 +32,19 @@ var app = new Vue({
     RecordTitle: '',
     RecordMessage: '',
 	editedRecord: false	,
+	showDelete: false,
+    showAdd: notepadStorage.count(),
   },
 
   watch: {//наблюдатель. При любом изменении в записях сохраняет их.
     records: {
       handler: function (records) {
         notepadStorage.save(records)
+        if (records.length > 0){
+			this.showAdd = true
+		}else{
+			this.showAdd = false
+		}
       },
       deep: true
     }
@@ -37,21 +52,29 @@ var app = new Vue({
 
   methods:{
 	addRecord: function (){//Добавим новую запись
-	  id = this.records.push({
+	  id = this.records.push({//что бы при создании не создавать каждый раз новую запись получим id
 		id: notepadStorage.uid++,
 		title: '',
 		message: '',
 	  })
-	  this.editedRecord = this.records[id-1]
+	  if (id>0){
+	    this.editedRecord = this.records[id-1]//укажем указатель на свежую запись
+		this.showDelete = true
+	  }
       this.RecordTitle = ''
       this.RecordMessage = ''
+	  
     },
-	editRecord: function(record){
+	editRecord: function(record){//редактирование записи
 	  this.editedRecord = record
 	  this.RecordTitle = record.title
       this.RecordMessage = record.message
+	  this.showDelete = true
 	  return
 	},
+	/*
+		Сохранение записи.
+	*/
 	saveRecord: function(record){
 	  var title = this.RecordTitle && this.RecordTitle.trim()
 	  var message = this.RecordMessage && this.RecordMessage.trim()
@@ -60,11 +83,14 @@ var app = new Vue({
 		  record.message = message
 	  }else{
 		id = this.records.push({
-		id: notepadStorage.uid++,
-		title: title,
-		message: message,
+			id: notepadStorage.uid++,
+			title: title,
+			message: message,
 	    })
-        this.editedRecord = this.records[id-1]
+        if (id>0){
+	      this.editedRecord = this.records[id-1]//укажем указатель на свежую запись
+          this.showDelete = true
+	    }
 	  }
 	  return
 	},
@@ -73,6 +99,7 @@ var app = new Vue({
       this.RecordTitle = ''
       this.RecordMessage = ''
       this.editedRecord = false;
+      this.showDelete = false
 	  return
 	},
   }

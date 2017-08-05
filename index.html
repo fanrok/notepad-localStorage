@@ -26,6 +26,7 @@
 		<div class="col-md-2 center">
             <button class="btn btn-info"
 					@click="addRecord"
+					v-show="showAdd"
 			>Добавить</button><br/>
 			<ol class="records-list">
 				<li v-for="record in records" 
@@ -45,6 +46,7 @@
 				>Сохранить</button>
 				<button class="btn btn-primary fl-right mn-left"
 					@click="deleteRecord(editedRecord)"
+					v-show="showDelete"
 				>Удалить</button>
 			</div>
 		</div>
