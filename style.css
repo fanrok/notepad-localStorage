@@ -1,4 +1,4 @@
-.right {
+.fl-right {
     float: right;
 }
 .record{
@@ -6,4 +6,7 @@
 }
 .record:hover{
 	text-decoration:underline;
+}
+.mn-left{
+	mergin-left:10px;
 }

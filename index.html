@@ -24,22 +24,28 @@
 	  </div>
 	  <div class="row">
 		<div class="col-md-2 border-right-0">
+            <button class="btn btn-info"
+					@click="addRecord"
+			>Добавить</button>
 			<ol class="records-list">
 				<li v-for="record in records" 
 					class="record"
-					@click="editRecord(record)"
-					:key="record.id">
+					@click="editRecord(record)">
 					{{record.title}}
 				</li>
 			</ol>
-			<button class="btn btn-info">Добавить</button>
+			
 		</div>
 		<div class="col-md-10 border-left-0">
-			<input type="text" class="form-control" v-model="RecordTitle" :key="RecordId" :placeholder="title"/><br/>
+			<input type="text" class="form-control" v-model="RecordTitle" :placeholder="title"/><br/>
 			<textarea class="form-control" v-model="RecordMessage" rows="20" >Писать тут</textarea><br>
-			<button class="btn btn-info right"
-				@click="addRecord"
+            
+			<button class="btn btn-success right mn-left"
+				@click="saveRecord(editedRecord)"
 			>Сохранить</button>
+			<button class="btn btn-primary right mn-left"
+				@click="deleteRecord(editedRecord)"
+			>Удалить</button>
 		</div>
 	  </div>
   </div>
