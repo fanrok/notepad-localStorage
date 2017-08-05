@@ -10,7 +10,7 @@ var notepadStorage = {
     notepadStorage.uid = records.length
     return records
   },
-  count: function(){
+  showAdd: function(){
 	var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
 	if (records.length > 0){
 		return true
@@ -33,7 +33,7 @@ var app = new Vue({
     RecordMessage: '',
 	editedRecord: false	,
 	showDelete: false,
-    showAdd: notepadStorage.count(),
+    showAdd: notepadStorage.showAdd(),
   },
 
   watch: {//наблюдатель. При любом изменении в записях сохраняет их.
