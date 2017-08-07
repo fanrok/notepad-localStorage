@@ -12,11 +12,7 @@ var notepadStorage = {
   },
   showAdd: function(){
 	var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-	if (records.length > 0){
-		return true
-	}else{
-		return false
-	}
+	return records.length > 0 ? true : false;
   },
   save: function (records) {//сохранение данных в хранилище
     localStorage.setItem(STORAGE_KEY, JSON.stringify(records))
